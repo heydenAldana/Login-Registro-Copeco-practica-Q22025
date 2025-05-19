@@ -2,6 +2,7 @@ import React, { useState } from 'react';
 import './Registro.css'; 
 
 const Registro = () => {
+  const [dni, setDni] = useState('');
   const [nombre, setNombre] = useState('');
   const [apellido, setApellido] = useState('');
   const [fechaNacimiento, setFechaNacimiento] = useState('');
@@ -11,7 +12,7 @@ const Registro = () => {
 
   const handleSubmit = (event) => {
     event.preventDefault();
-    console.log('Registro: ', { nombre, apellido, fechaNacimiento, correo, contrasena, confirmarContrasena });
+    console.log('Registro: ', {dni, nombre, apellido, fechaNacimiento, correo, contrasena, confirmarContrasena });
     if (contrasena !== confirmarContrasena) {
       alert('Las contraseñas no coinciden.');
       return;
@@ -22,6 +23,17 @@ const Registro = () => {
     <div className="registro">
       <h2>Registrece</h2>
       <form onSubmit={handleSubmit} className="registro-form">
+        <div className="input-group">
+          <label htmlFor="dni">Numero de Identidad:</label>
+          <input
+            type="text"
+            id="nombre"
+            value={nombre}
+            onChange={(e) => setDni(e.target.value)}
+            className="input-field"
+            required
+          />
+        </div>
         <div className="input-group">
           <label htmlFor="nombre">Nombre:</label>
           <input
